@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+    <main class="login-form">
+      <div class="cotainer">
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="float-left"><button class="btn btn-default"><i class="fas fa-user-circle"></i></button> My Bank | {{clientData.name}}</div>
+                <div class="float-right">
+                  <a class="btn btn-info" [routerLink]="['/newaccount']">  <i class="fas fa-plus-circle"></i> &nbsp; New Account</a> &nbsp;
+                  <button class="btn btn-danger" (click)="logout()"> <i class="fas fa-power-off"></i> &nbsp;  Logout</button>
+                </div>
+              </div>
+              <div class="card-body" style="height: 350px;">
+                <div class="card-title">
+                  <p>Select account:</p>
+                  <select class="form-control" [(ngModel)]="selectedAccount" (change)="displayAccountDetails(selectedAccount)">
+                <option *ngFor="let item of clientData.accounts" [value]="item">{{item}}</option>
+                </select><br/>
+              <button (click)="refresh()" class="btn btn-outline-secondary"><i class="fas fa-download"></i> Refresh account list</button>
+              </div>
+                <hr/>
+                <div *ngIf="!fetchingAccountDetails && accountSelected" class="alert alert-info">
+                <h6 style="font-family: Times New Roman">Account No: {{selectedAccount}}</h6>
+                <h6 style="font-family: Times New Roman">Balance: R{{AccountDetails.balance}}</h6>
+                <h6 style="font-family: Times New Roman">Overdraft: R{{AccountDetails.overdraft}}</h6>
+                </div>
+                <div *ngIf="!accountSelected">
+                    <label><button class="btn btn-info" disabled><i class="fas fa-exclamation-circle"></i></button> &nbsp;No account selected.</label>
+                    </div>
+                <div *ngIf="fetchingAccountDetails">
+                    Loading...
+                </div>
+                <div *ngIf="">
+
+                </div>
+
+              </div>
+              <div class="card-footer text-right">
+                  <button class="btn btn-info" [disabled]="!accountSelected" (click)="deposit()">Deposit <span *ngIf="accountSelected">to {{selectedAccount}}</span></button > &nbsp;
+                  <button class="btn btn-info" [disabled]="!accountSelected" (click)="withdraw()">Withdraw <span *ngIf="accountSelected">from {{selectedAccount}}</span></button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

@@ -2,8 +2,14 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const authBaseUrl = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyAR4Yezxk7Ao4qeFntu7tIvE7pH28Eh64Y';
+const accountBaseUrl = 'https://momentum-retail-practical-test.firebaseio.com/accounts/';
+const clientBaseUrl = 'https://momentum-retail-practical-test.firebaseio.com/clients/';
 export const environment = {
-  production: false
+  production: false,
+  authUrl: authBaseUrl,
+  accountsEndPoint: accountBaseUrl,
+  clientsEndPoint: clientBaseUrl
 };
 
 /*

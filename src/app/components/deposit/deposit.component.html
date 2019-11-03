@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <main class="login-form">
+      <div class="cotainer">
+        <div class="row justify-content-center">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="float-left">
+                  <button class="btn btn-default">
+                    <i class="fas fa-list-alt"></i> - Account deposit ({{accountNumber}})
+                  </button>
+                </div>
+                <div class="float-right">
+                  <button class="btn btn-danger">
+                    <i class="fas fa-power-off"></i> &nbsp; Logout
+                  </button>
+                </div>
+              </div>
+
+              <div class="card-body" style="height: 250px;">
+                  <form [formGroup]="depositForm" >
+                      <div class="card-body">
+                        <div class="form-group row">
+                          <label
+                            for="amount"
+                            class="col-md-4 col-form-label text-md-right"
+                            >Current balance (R):</label
+                          >
+                          <div class="col-md-6">
+                            <input
+                              type="text"
+                              id="balance"
+                              formControlName="balance"
+                              class="form-control"
+                              disabled="true"
+                              placeholder="{{AccountDetails?.balance}}"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label
+                            for="depositAmount"
+                            class="col-md-4 col-form-label text-md-right"
+                            >Deposit amount (R):</label
+                          >
+                          <div class="col-md-6">
+                            <input
+                              type="string"
+                              id="depositAmount"
+                              class="form-control"
+                              formControlName="depositAmount"
+                              name="depositAmount"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                      </div>
+                    </form>
+                    <div class="alert alert-success" *ngIf="success">
+                        <strong>R{{depositAmount}}</strong> was successfully deposited to account no: <strong>{{accountNumber}}</strong> - new balance: <strong>R{{AccountDetails.balance}}</strong>
+                      </div>
+                      <div class="alert alert-info" *ngIf="loading">
+                          Depositing funds to your accoun, please wait...
+                        </div>
+              </div>
+
+              <div class="card-footer text-right">
+                <button class="btn btn-info" (click)="onSubmit()">
+                  Deposit now <span> </span>
+                </button> &nbsp;
+                <button class="btn btn-info" (click)="cancel()">
+                    Cancel <span> </span>
+                  </button>
+                &nbsp;
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

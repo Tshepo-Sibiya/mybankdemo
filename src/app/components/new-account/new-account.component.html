@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+      <main class="login-form">
+        <div class="cotainer">
+          <div class="row justify-content-center">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <div class="float-left">
+                    <button class="btn btn-default">
+                      <i class="fas fa-list-alt"></i> Open New Account
+                    </button>
+                  </div>
+                  <div class="float-right">
+                    <button class="btn btn-danger">
+                      <i class="fas fa-power-off"></i> &nbsp; Logout
+                    </button>
+                  </div>
+                </div>
+
+                <div class="card-body" style="height: 250px;">
+                    <form [formGroup]="newAccountForm" >
+                        <div class="card-body">
+                          <div class="form-group row">
+                            <label
+                              for="newBalance"
+                              class="col-md-4 col-form-label text-md-right"
+                              >Inital balance (R):</label
+                            >
+                            <div class="col-md-6">
+                              <input
+                                type="text"
+                                id="newBalance"
+                                formControlName="newBalance"
+                                class="form-control"
+                              />
+                            </div>
+                          </div>
+
+                        </div>
+                      </form>
+                      <div class="alert alert-success" *ngIf="success">
+                          Congradulations, your new account <strong>({{accountNumber}})</strong> has been created, with an initial balance of <strong>R{{AccountDetails.balance}}</strong>.
+                        </div>
+                        <div class="alert alert-info" *ngIf="loading">
+                          Creating account, please wait...
+                          </div>
+                </div>
+
+                <div class="card-footer text-right">
+                  <button class="btn btn-info" (click)="onSubmit()">
+                    Create account <span> </span>
+                  </button> &nbsp;
+                  <a [routerLink]="['/overview']"> <button class="btn btn-info">Cancel</button></a>
+                  &nbsp;
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
